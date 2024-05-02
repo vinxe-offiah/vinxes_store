@@ -5,9 +5,9 @@ import 'package:vinxes_store/features/authentication/screens/onboarding/widgets/
 import 'package:vinxes_store/utils/constants/image_strings.dart';
 import 'package:vinxes_store/utils/constants/text_strings.dart';
 
-import 'onboarding/widgets/onboarding_dot_navigation.dart';
-import 'onboarding/widgets/onboarding_next_button.dart';
-import 'onboarding/widgets/onboarding_page.dart';
+import 'widgets/onboarding_dot_navigation.dart';
+import 'widgets/onboarding_next_button.dart';
+import 'widgets/onboarding_page.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
