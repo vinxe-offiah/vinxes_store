@@ -35,6 +35,7 @@ class VTexts {
   static const String orSignInWith = "Or sign in with";
   static const String orSignUpWith = "Or sign up with";
   static const String iAgreeTo = "I agree to";
+  static const String and = "and";
   static const String privacypolicy = "Privacy Policy";
   static const String termsOfUse = "Terms of use";
   static const String verificationCode = "verificationCode";
@@ -49,13 +50,15 @@ class VTexts {
   static const String changePasswordTitle = "Password reset Email sent";
   static const String changePasswordSubtitle =
       "Your account security is our priority! We've sent you a secure link to safely change your password and keep your account protected";
-  static const String confirmEmail = "Verify your Email address";
+  static const String confirmEmail = "Verify your Email address!";
   static const String confirmEmailSubtitle =
       "Congratulations! Your Account awaits. Verify your Email to start shopping and experience a world of unrivaled deals and personalised offers";
+  static const String supportEmail = "sagejaba@gmail.com";
   static const String emailNotReceivedMessage =
       "Didn't get the Email? Check your spam or resend it";
   static const String yourAccountCreated =
       "Your account is successfully created";
   static const String youAccountCreatedSubtitle =
       "Welcome to the ultimate shopping destination: Your account is created, unleash the joy of seamless online shopping.";
+  static const String continueSubmit = "Continue";
 }
