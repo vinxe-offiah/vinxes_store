@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vinxes_store/features/authentication/screens/password_configuration/forgot_password.dart';
 import 'package:vinxes_store/features/authentication/screens/signup/signup.dart';
+import 'package:vinxes_store/navigation_menu.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
 import 'package:vinxes_store/utils/constants/text_strings.dart';
 
@@ -48,7 +50,8 @@ class LoginForm extends StatelessWidget {
                 ),
                 // Forgot password
                 TextButton(
-                    onPressed: () {}, child: const Text(VTexts.forgotPassword)),
+                    onPressed: () => Get.to(const ForgotPassword()),
+                    child: const Text(VTexts.forgotPassword)),
               ],
             ),
             const SizedBox(height: VSizes.spaceBtwSections),
@@ -57,10 +60,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white),
-                onPressed: () {},
+                onPressed: () => Get.to(const NavigationMenu()),
                 child: const Text(VTexts.signIn),
               ),
             ),

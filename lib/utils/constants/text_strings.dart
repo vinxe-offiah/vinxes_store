@@ -61,4 +61,6 @@ class VTexts {
   static const String youAccountCreatedSubtitle =
       "Welcome to the ultimate shopping destination: Your account is created, unleash the joy of seamless online shopping.";
   static const String continueSubmit = "Continue";
+  static const String submit = "Submit";
+  static const String done = "Done";
 }
