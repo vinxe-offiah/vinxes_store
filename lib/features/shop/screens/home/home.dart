@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vinxes_store/common/widgets/custom_shapes/containers/circular_container.dart';
-import 'package:vinxes_store/utils/constants/colors.dart';
+import 'package:vinxes_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,31 +10,9 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.all(0),
-              color: VColors.primary,
-              child: SizedBox(
-                height: 400,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: -150,
-                      right: -250,
-                      child: VCircularContainer(
-                        backgroundColor: VColors.textWhite.withOpacity(0.1),
-                      ),
-                    ),
-                    Positioned(
-                      top: 100,
-                      right: -300,
-                      child: VCircularContainer(
-                        backgroundColor: VColors.textWhite.withOpacity(0.1),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
+            PrimaryHeaderContainer(
+              child: Container(),
+            ),
           ],
         ),
       ),
