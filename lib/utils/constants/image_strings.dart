@@ -19,4 +19,8 @@ class VImages {
       "assets/images/animated_images/mail-courier.png";
   static const String verificationSuccess =
       "assets/images/animated_images/high-five-illustration.png";
+
+  //Category Icons
+  static const String shoes = "assets/images/category_icons/shoes.jpg";
+  static const String clothes = "assets/images/category_icons/clothes.jpg";
 }
