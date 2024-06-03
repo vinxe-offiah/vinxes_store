@@ -23,4 +23,12 @@ class VImages {
   //Category Icons
   static const String shoes = "assets/images/category_icons/shoes.jpg";
   static const String clothes = "assets/images/category_icons/clothes.jpg";
+
+  //carousel Images
+  static const String banner1 =
+      "assets/images/carousel_images/promo-banner-1.jpg";
+  static const String banner2 =
+      "assets/images/carousel_images/promo-banner-2.jpg";
+  static const String banner3 =
+      "assets/images/carousel_images/promo-banner-3.jpg";
 }

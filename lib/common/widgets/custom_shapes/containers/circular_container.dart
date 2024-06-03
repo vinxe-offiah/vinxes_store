@@ -7,6 +7,7 @@ class VCircularContainer extends StatelessWidget {
       this.height = 400,
       this.width = 400,
       this.padding = 0,
+      this.margin,
       this.radius = 400,
       this.child,
       this.backgroundColor = VColors.textWhite});
@@ -14,6 +15,7 @@ class VCircularContainer extends StatelessWidget {
   final double? height;
   final double? width;
   final double padding;
+  final EdgeInsets? margin;
   final double radius;
   final Widget? child;
   final Color backgroundColor;
@@ -24,6 +26,7 @@ class VCircularContainer extends StatelessWidget {
       height: height,
       width: width,
       padding: EdgeInsets.all(padding),
+      margin: margin,
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(radius),
