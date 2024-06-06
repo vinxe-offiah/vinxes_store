@@ -55,6 +55,7 @@ flutter:
     - assets/images/animated_images/
     - assets/images/category_icons/
     - assets/images/carousel_images/
+    - assets/images/products/
     - assets/icons/
     - assets/logos/
 

@@ -21,7 +21,7 @@ class VImages {
       "assets/images/animated_images/high-five-illustration.png";
 
   //Category Icons
-  static const String shoes = "assets/images/category_icons/shoes.jpg";
+  static const String shoes = "assets/images/category_icons/shoes.png";
   static const String clothes = "assets/images/category_icons/clothes.jpg";
 
   //carousel Images
@@ -31,4 +31,11 @@ class VImages {
       "assets/images/carousel_images/promo-banner-2.jpg";
   static const String banner3 =
       "assets/images/carousel_images/promo-banner-3.jpg";
+
+  //Products images
+  static const String gucciShirt = "assets/images/products/gucci-shirt.png";
+  static const String microwave = "assets/images/products/microwave.png";
+  static const String nikeShoes = "assets/images/products/nike-shoes.png";
+  static const String samsungPhones =
+      "assets/images/products/samsung-phones.png";
 }
