@@ -38,4 +38,5 @@ class VImages {
   static const String nikeShoes = "assets/images/products/nike-shoes.png";
   static const String samsungPhones =
       "assets/images/products/samsung-phones.png";
+  static const String runningShoes = "assets/images/products/running-shoes.png";
 }
