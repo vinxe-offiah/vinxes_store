@@ -10,17 +10,19 @@ import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/constants/image_strings.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
 
+import '../../../../common/widgets/layouts/grid_layout.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             // Header
-            PrimaryHeaderContainer(
+            const PrimaryHeaderContainer(
               child: Column(
                 children: [
                   // Home appbar
@@ -54,20 +56,27 @@ class HomeScreen extends StatelessWidget {
 
             // Body
             Padding(
-              padding: EdgeInsets.all(VSizes.defaultSpace),
+              padding: const EdgeInsets.all(VSizes.defaultSpace),
               child: Column(
                 children: [
                   //promo sliders
-                  VPromoSlider(
+                  const VPromoSlider(
                     banners: [
                       VImages.banner1,
                       VImages.banner2,
                       VImages.banner3
                     ],
                   ),
-                  SizedBox(height: VSizes.spaceBtwSections),
-                  //vertical products
-                  VProductCardVertical(),
+                  const SizedBox(height: VSizes.spaceBtwSections),
+
+                  // Section Heading
+                  VSectionHeading(title: 'Popular products', onPressed: () {}),
+                  const SizedBox(height: VSizes.spaceBtwItems),
+
+                  //popular products
+                  VGridLayout(
+                      itemCount: 2,
+                      itemBuilder: (_, index) => const VProductCardVertical()),
                 ],
               ),
             ),

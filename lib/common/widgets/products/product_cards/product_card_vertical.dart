@@ -10,6 +10,7 @@ import 'package:vinxes_store/utils/constants/sizes.dart';
 import 'package:vinxes_store/utils/helpers/helper_functions.dart';
 
 import '../../icons/circular_icon.dart';
+import 'product_price_text.dart';
 
 class VProductCardVertical extends StatelessWidget {
   const VProductCardVertical({super.key});
@@ -18,70 +19,117 @@ class VProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = VHelperFunctions.isDarkMode(context);
 
-    return Container(
-      width: 180,
-      padding: const EdgeInsets.all(1),
-      decoration: BoxDecoration(
-        boxShadow: [VShadowStyle.verticalProductShadow],
-        borderRadius: BorderRadius.circular(VSizes.productImageRadius),
-        color: dark ? VColors.darkerGrey : VColors.light,
-      ),
-      child: Column(
-        children: [
-          //Thumbnail, wishlist button, discount tag
-          VRoundedContainer(
-            height: 180,
-            padding: const EdgeInsets.all(VSizes.sm),
-            backgroundColor: dark ? VColors.dark : VColors.light,
-            child: Stack(
-              children: [
-                //Thumbnail image
-                const VRectImage(
-                  imageUrl: VImages.runningShoes,
-                  applyImageRadius: true,
-                ),
-                //Sale tag
-                Positioned(
-                  top: 10,
-                  child: VRoundedContainer(
-                    radius: VSizes.sm,
-                    backgroundColor: VColors.secondary.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: VSizes.sm, vertical: VSizes.xs),
-                    child: Text(
-                      '25%',
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .apply(color: Colors.black),
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: 180,
+        padding: const EdgeInsets.all(1),
+        decoration: BoxDecoration(
+          boxShadow: [VShadowStyle.verticalProductShadow],
+          borderRadius: BorderRadius.circular(VSizes.productImageRadius),
+          color: dark ? VColors.darkerGrey : VColors.light,
+        ),
+        child: Column(
+          children: [
+            //Thumbnail, wishlist button, discount tag
+            VRoundedContainer(
+              height: 180,
+              padding: const EdgeInsets.all(VSizes.sm),
+              backgroundColor: dark ? VColors.dark : VColors.light,
+              child: Stack(
+                children: [
+                  //Thumbnail image
+                  const VRectImage(
+                    imageUrl: VImages.runningShoes,
+                    applyImageRadius: true,
+                  ),
+                  //Sale tag
+                  Positioned(
+                    top: 10,
+                    child: VRoundedContainer(
+                      radius: VSizes.sm,
+                      backgroundColor: VColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: VSizes.sm, vertical: VSizes.xs),
+                      child: Text(
+                        '25%',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .apply(color: Colors.black),
+                      ),
                     ),
                   ),
-                ),
-                const Positioned(
-                  top: 0,
-                  right: 0,
-                  child: VCircularIcon(
-                    icon: Iconsax.heart5,
-                    color: Colors.red,
+                  const Positioned(
+                    top: 0,
+                    right: 0,
+                    child: VCircularIcon(
+                      icon: Iconsax.heart5,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: VSizes.spaceBtwItems / 2),
-          //product details
-          const Padding(
-            padding: EdgeInsets.only(left: VSizes.sm),
-            child: Column(
-              children: [
-                VProductTitleText(
-                  title: 'Red Nike running shoes',
-                  smallSize: true,
-                )
-              ],
+            const SizedBox(height: VSizes.spaceBtwItems / 2),
+
+            //product details
+            Padding(
+              padding: const EdgeInsets.only(left: VSizes.sm),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const VProductTitleText(
+                    title: 'Red Nike running shoes',
+                    smallSize: true,
+                  ),
+                  const SizedBox(height: VSizes.spaceBtwItems / 2),
+                  Row(
+                    children: [
+                      Text(
+                        'Nike',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                      const SizedBox(width: VSizes.xs),
+                      const Icon(
+                        Iconsax.verify5,
+                        color: VColors.primary,
+                        size: VSizes.iconXs,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //Product Price text
+                      const VProductPriceText(price: '35.5'),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: VColors.dark,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(VSizes.cardRadiusMd),
+                            bottomRight: Radius.circular(
+                              VSizes.productImageRadius,
+                            ),
+                          ),
+                        ),
+                        child: const SizedBox(
+                          width: VSizes.iconLg * 1.2,
+                          height: VSizes.iconLg * 1.2,
+                          child: Center(
+                            child: Icon(Iconsax.add, color: VColors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

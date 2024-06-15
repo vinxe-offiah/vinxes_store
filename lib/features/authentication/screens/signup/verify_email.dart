@@ -18,7 +18,7 @@ class VerifyEmailScreen extends StatelessWidget {
         automaticallyImplyLeading: false, //removes the default back arrow
         actions: [
           IconButton(
-            onPressed: () => Get.offAll(const LoginScreen()),
+            onPressed: () => Get.offAll(() => const LoginScreen()),
             icon: const Icon(CupertinoIcons.clear),
           ),
         ],
@@ -61,7 +61,7 @@ class VerifyEmailScreen extends StatelessWidget {
                           image: VImages.verificationSuccess,
                           title: VTexts.yourAccountCreated,
                           subTitle: VTexts.youAccountCreatedSubtitle,
-                          onPressed: () => Get.to(const LoginScreen()),
+                          onPressed: () => Get.to(() => const LoginScreen()),
                         )),
                     child: const Text(VTexts.continueSubmit)),
               ),

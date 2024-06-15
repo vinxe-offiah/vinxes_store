@@ -50,7 +50,7 @@ class LoginForm extends StatelessWidget {
                 ),
                 // Forgot password
                 TextButton(
-                    onPressed: () => Get.to(const ForgotPassword()),
+                    onPressed: () => Get.to(() => const ForgotPassword()),
                     child: const Text(VTexts.forgotPassword)),
               ],
             ),
@@ -60,7 +60,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.to(const NavigationMenu()),
+                onPressed: () => Get.to(() => const NavigationMenu()),
                 child: const Text(VTexts.signIn),
               ),
             ),
@@ -70,7 +70,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () => Get.to(const SignUpScreen()),
+                onPressed: () => Get.to(() => const SignUpScreen()),
                 child: const Text(VTexts.createAccount),
               ),
             ),
