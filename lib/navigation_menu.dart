@@ -5,6 +5,8 @@ import 'package:vinxes_store/features/shop/screens/home/home.dart';
 import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/helpers/helper_functions.dart';
 
+import 'features/shop/screens/store/store.dart';
+
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
@@ -42,7 +44,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    Container(color: Colors.green),
+    const StoreScreen(),
     Container(color: Colors.purple),
     Container(color: Colors.tealAccent)
   ];

@@ -10,6 +10,7 @@ import 'package:vinxes_store/utils/constants/sizes.dart';
 import 'package:vinxes_store/utils/helpers/helper_functions.dart';
 
 import '../../icons/circular_icon.dart';
+import '../../texts/v_brand_title_text_with_icon.dart';
 import 'product_price_text.dart';
 
 class VProductCardVertical extends StatelessWidget {
@@ -74,60 +75,51 @@ class VProductCardVertical extends StatelessWidget {
             const SizedBox(height: VSizes.spaceBtwItems / 2),
 
             //product details
-            Padding(
-              padding: const EdgeInsets.only(left: VSizes.sm),
+            const Padding(
+              padding: EdgeInsets.only(left: VSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const VProductTitleText(
+                  VProductTitleText(
                     title: 'Red Nike running shoes',
                     smallSize: true,
                   ),
-                  const SizedBox(height: VSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text(
-                        'Nike',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(width: VSizes.xs),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: VColors.primary,
-                        size: VSizes.iconXs,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //Product Price text
-                      const VProductPriceText(price: '35.5'),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: VColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(VSizes.cardRadiusMd),
-                            bottomRight: Radius.circular(
-                              VSizes.productImageRadius,
-                            ),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          width: VSizes.iconLg * 1.2,
-                          height: VSizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(Iconsax.add, color: VColors.white),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
+                  SizedBox(height: VSizes.spaceBtwItems / 2),
+                  VBrandTitleWithVerifiedIcon(title: 'Nike'),
                 ],
               ),
             ),
+
+            const Spacer(),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                //Product Price text
+                const Padding(
+                  padding: EdgeInsets.only(left: 7),
+                  child: VProductPriceText(price: '35.5'),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: VColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(VSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(
+                        VSizes.productImageRadius,
+                      ),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: VSizes.iconLg * 1.2,
+                    height: VSizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(Iconsax.add, color: VColors.white),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),

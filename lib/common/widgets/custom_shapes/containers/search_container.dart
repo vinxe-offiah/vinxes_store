@@ -13,12 +13,14 @@ class VSearchContainer extends StatelessWidget {
     this.showBackground = true,
     this.showBorder = true,
     this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: VSizes.defaultSpace),
   });
 
   final IconData? icon;
   final String text;
   final bool showBackground, showBorder;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class VSearchContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: VSizes.defaultSpace),
+        padding: padding,
         child: Container(
           width: VDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(VSizes.md),
