@@ -14,29 +14,26 @@ class PrimaryHeaderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CurvedEdgeWidget(
-      child: SizedBox(
-        height: 400,
-        child: Container(
-          color: VColors.primary,
-          child: Stack(
-            children: [
-              Positioned(
-                top: -150,
-                right: -250,
-                child: VCircularContainer(
-                  backgroundColor: VColors.textWhite.withOpacity(0.1),
-                ),
+      child: Container(
+        color: VColors.primary,
+        child: Stack(
+          children: [
+            Positioned(
+              top: -150,
+              right: -250,
+              child: VCircularContainer(
+                backgroundColor: VColors.textWhite.withOpacity(0.1),
               ),
-              Positioned(
-                top: 100,
-                right: -300,
-                child: VCircularContainer(
-                  backgroundColor: VColors.textWhite.withOpacity(0.1),
-                ),
+            ),
+            Positioned(
+              top: 100,
+              right: -300,
+              child: VCircularContainer(
+                backgroundColor: VColors.textWhite.withOpacity(0.1),
               ),
-              child,
-            ],
-          ),
+            ),
+            child,
+          ],
         ),
       ),
     );
