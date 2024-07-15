@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vinxes_store/features/personalization/screens/profile/profile.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -29,7 +31,9 @@ class VUserProfileTile extends StatelessWidget {
               .textTheme
               .bodyMedium!
               .apply(color: VColors.white)),
-      trailing: IconButton(onPressed: () {}, icon: const Icon(Iconsax.edit)),
+      trailing: IconButton(
+          onPressed: () => Get.to(() => const ProfileScreen()),
+          icon: const Icon(Iconsax.edit)),
     );
   }
 }

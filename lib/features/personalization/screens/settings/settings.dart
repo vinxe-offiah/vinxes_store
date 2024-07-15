@@ -39,60 +39,87 @@ class SettingsScreen extends StatelessWidget {
             ),
 
             /// Body
-            const Padding(
-              padding: EdgeInsets.all(VSizes.defaultSpace),
+            Padding(
+              padding: const EdgeInsets.all(VSizes.defaultSpace),
               child: Column(
                 children: [
                   /// Account Settings
-                  VSectionHeading(
+                  const VSectionHeading(
                       title: 'Account Settings', showActionButton: false),
-                  SizedBox(height: VSizes.spaceBtwItems),
+                  const SizedBox(height: VSizes.spaceBtwItems),
 
-                  VSettingsMenuTile(
+                  const VSettingsMenuTile(
                     icon: Iconsax.safe_home,
                     title: 'My Address',
                     subtitle: 'Set shopping delivery address',
                   ),
-                  VSettingsMenuTile(
+                  const VSettingsMenuTile(
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subtitle: 'Add, remove products and move to checkout',
                   ),
-                  VSettingsMenuTile(
+                  const VSettingsMenuTile(
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
                     subtitle: 'In-progress and completed orders',
                   ),
-                  VSettingsMenuTile(
+                  const VSettingsMenuTile(
                     icon: Iconsax.bank,
                     title: 'Bank Account',
                     subtitle: 'Withdraw balance to registered bank account',
                   ),
-                  VSettingsMenuTile(
+                  const VSettingsMenuTile(
                     icon: Iconsax.discount_shape,
                     title: 'My Coupons',
                     subtitle: 'List of all the discounted coupons',
                   ),
-                  VSettingsMenuTile(
+                  const VSettingsMenuTile(
                     icon: Iconsax.notification,
                     title: 'Notifications',
                     subtitle: 'Set any kind of notification message',
                   ),
-                  VSettingsMenuTile(
+                  const VSettingsMenuTile(
                     icon: Iconsax.security_card,
                     title: 'account Privacy',
                     subtitle: 'Manage data usage and connected accounts',
                   ),
 
                   /// App Settings
-                  SizedBox(height: VSizes.spaceBtwSections),
-                  VSectionHeading(
+                  const SizedBox(height: VSizes.spaceBtwSections),
+                  const VSectionHeading(
                       title: 'App Settings', showActionButton: false),
-                  SizedBox(height: VSizes.spaceBtwItems),
-                  VSettingsMenuTile(
+                  const SizedBox(height: VSizes.spaceBtwItems),
+                  const VSettingsMenuTile(
                       icon: Iconsax.document_upload,
                       title: 'Load Data',
                       subtitle: 'Upload data to your cloud firebase'),
+                  VSettingsMenuTile(
+                    icon: Iconsax.location,
+                    title: 'Geolocation',
+                    subtitle: 'Set recommendation based on location',
+                    trailing: Switch(value: true, onChanged: (value) {}),
+                  ),
+                  VSettingsMenuTile(
+                    icon: Iconsax.security_user,
+                    title: 'Safe Mode',
+                    subtitle: 'Search result is safe for all ages',
+                    trailing: Switch(value: false, onChanged: (value) {}),
+                  ),
+                  VSettingsMenuTile(
+                    icon: Iconsax.image,
+                    title: 'HD Image Quality',
+                    subtitle: 'Set image quality to be seen',
+                    trailing: Switch(value: true, onChanged: (value) {}),
+                  ),
+
+                  /// Logout Button
+                  const SizedBox(height: VSizes.spaceBtwSections),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton(
+                        onPressed: () {}, child: const Text("Log Out")),
+                  ),
+                  const SizedBox(height: VSizes.spaceBtwSections * 2.5),
                 ],
               ),
             ),
