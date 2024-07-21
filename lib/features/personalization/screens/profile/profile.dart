@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vinxes_store/common/widgets/appbar/appbar.dart';
 import 'package:vinxes_store/common/widgets/images/v_circular_image.dart';
