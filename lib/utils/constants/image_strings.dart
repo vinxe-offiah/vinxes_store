@@ -44,4 +44,10 @@ class VImages {
   static const String hoodie = "assets/images/products/Hoodie.png";
   static const String greenshirt = "assets/images/products/Green-shirt1.png";
   static const String nikeLogo = "assets/images/products/Nike-Logo.png";
+
+  // Review Images
+  static const String userReview1 = "assets/images/user/profile-image-1.jpg";
+  static const String userReview2 = "assets/images/user/profile-image-2.jpg";
+  static const String userReview3 = "assets/images/user/profile-image-3.jpg";
+  static const String userReview4 = "assets/images/user/profile-image-4.jpg";
 }

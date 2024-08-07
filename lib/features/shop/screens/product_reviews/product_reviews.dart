@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:vinxes_store/common/widgets/appbar/appbar.dart';
-import 'package:vinxes_store/utils/constants/colors.dart';
+import 'package:vinxes_store/common/widgets/rating/rating_indicator.dart';
+import 'package:vinxes_store/features/shop/screens/product_reviews/widgets/user_review_card.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
 
 import 'widgets/overall_product_rating.dart';
@@ -12,25 +11,29 @@ class ProductReviewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:
-          const VAppBar(title: Text('reviews & Ratings'), showBackArrow: true),
+    return const Scaffold(
+      appBar: VAppBar(title: Text('Reviews & Ratings'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(VSizes.defaultSpace),
+          padding: EdgeInsets.all(VSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                   'Ratings and reviews are verified and are from people who make use of our product and unaffiliated with the platform'),
-              const SizedBox(height: VSizes.spaceBtwItems),
+              SizedBox(height: VSizes.spaceBtwItems),
 
               /// Overall product Ratings
-              const VOverallProductRating(),
-              RatingBarIndicator(
-                itemBuilder: (_, __) =>
-                    const Icon(Iconsax.star, color: VColors.primary),
-              ),
+              VOverallProductRating(),
+              VRatingBarIndicator(rating: 3.6),
+              Text('12,320'),
+              SizedBox(height: VSizes.spaceBtwSections),
+
+              /// User review section
+              UserReviewCard(),
+              UserReviewCard(),
+              UserReviewCard(),
+              UserReviewCard(),
             ],
           ),
         ),
