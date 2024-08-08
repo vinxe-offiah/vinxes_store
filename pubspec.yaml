@@ -62,7 +62,7 @@ flutter:
     - assets/images/carousel_images/
     - assets/images/products/
     - assets/images/user/
-    - assets/icons/
+    - assets/icons/payment_methods/
     - assets/logos/
 
   # An image asset can refer to one or more resolution-specific "variants", see

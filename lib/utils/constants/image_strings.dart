@@ -50,4 +50,16 @@ class VImages {
   static const String userReview2 = "assets/images/user/profile-image-2.jpg";
   static const String userReview3 = "assets/images/user/profile-image-3.jpg";
   static const String userReview4 = "assets/images/user/profile-image-4.jpg";
+
+  // Payment Methods
+  static const String applePay = "assets/icons/payment_methods/applepay.png";
+  static const String googlePay = "assets/icons/payment_methods/googlePay.png";
+  static const String mastercard =
+      "assets/icons/payment_methods/mastercard.png";
+  static const String paymentSuccessful =
+      "assets/icons/payment_methods/payment-success.png";
+  static const String payPal = "assets/icons/payment_methods/paypal.png";
+  static const String paystack = "assets/icons/payment_methods/paystack.png";
+  static const String paytm = "assets/icons/payment_methods/paytm.png";
+  static const String visa = "assets/icons/payment_methods/applepay.png";
 }

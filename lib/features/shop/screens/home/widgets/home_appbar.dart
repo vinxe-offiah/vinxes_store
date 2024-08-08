@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vinxes_store/common/widgets/appbar/appbar.dart';
 import 'package:vinxes_store/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:vinxes_store/features/shop/screens/cart/cart.dart';
 import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/constants/text_strings.dart';
 
@@ -34,7 +36,7 @@ class VHomeAppBar extends StatelessWidget {
       actions: [
         CartCounterIcon(
           iconColor: VColors.white,
-          onPressed: () {},
+          onPressed: () => Get.to(() => const CartScreen()),
         ),
       ],
     );
