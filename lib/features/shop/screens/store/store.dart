@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vinxes_store/common/widgets/appbar/appbar.dart';
 import 'package:vinxes_store/common/widgets/appbar/tabbar.dart';
 import 'package:vinxes_store/common/widgets/custom_shapes/containers/search_container.dart';
@@ -6,6 +7,8 @@ import 'package:vinxes_store/common/widgets/layouts/grid_layout.dart';
 import 'package:vinxes_store/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:vinxes_store/common/widgets/texts/section_heading.dart';
 import 'package:vinxes_store/common/widgets/brands/v_brand_card.dart';
+import 'package:vinxes_store/features/shop/screens/brand/all_brands.dart';
+import 'package:vinxes_store/features/shop/screens/brand/brand_product.dart';
 import 'package:vinxes_store/features/shop/screens/store/widget/v_category_tab.dart';
 import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
@@ -57,7 +60,7 @@ class StoreScreen extends StatelessWidget {
                       VSectionHeading(
                         title: 'featured brands',
                         showActionButton: true,
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const AllBrandsScreen()),
                       ),
                       const SizedBox(height: VSizes.spaceBtwItems / 1.5),
 
@@ -66,7 +69,9 @@ class StoreScreen extends StatelessWidget {
                         itemCount: 4,
                         mainAxisExtent: 80,
                         itemBuilder: (_, index) {
-                          return const VBrandCard(showBorder: false);
+                          return VBrandCard(
+                              showBorder: false,
+                              onTap: () => Get.to(() => const BrandProduct()));
                         },
                       ),
                     ],

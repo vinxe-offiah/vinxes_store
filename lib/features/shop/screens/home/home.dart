@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vinxes_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:vinxes_store/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:vinxes_store/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:vinxes_store/common/widgets/texts/section_heading.dart';
+import 'package:vinxes_store/features/shop/screens/all_products/all_products.dart';
 import 'package:vinxes_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:vinxes_store/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:vinxes_store/features/shop/screens/home/widgets/promo_slider.dart';
@@ -71,7 +73,9 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: VSizes.spaceBtwSections),
 
                   // Section Heading
-                  VSectionHeading(title: 'Popular products', onPressed: () {}),
+                  VSectionHeading(
+                      title: 'Popular products',
+                      onPressed: () => Get.to(() => const AllProducts())),
                   const SizedBox(height: VSizes.spaceBtwItems),
 
                   //popular products

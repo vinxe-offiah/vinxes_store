@@ -63,6 +63,7 @@ class VProductCardVertical extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Favourites icon
                   const Positioned(
                     top: 0,
                     right: 0,
@@ -102,6 +103,8 @@ class VProductCardVertical extends StatelessWidget {
                   padding: EdgeInsets.only(left: 7),
                   child: VProductPriceText(price: '35.5'),
                 ),
+
+                /// Add to cart
                 Container(
                   decoration: const BoxDecoration(
                     color: VColors.dark,

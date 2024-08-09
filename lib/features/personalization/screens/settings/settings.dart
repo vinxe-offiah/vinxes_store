@@ -6,6 +6,7 @@ import 'package:vinxes_store/common/widgets/custom_shapes/containers/primary_hea
 import 'package:vinxes_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:vinxes_store/common/widgets/texts/section_heading.dart';
 import 'package:vinxes_store/features/personalization/screens/address/address.dart';
+import 'package:vinxes_store/features/shop/screens/order/order.dart';
 import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
 
@@ -63,10 +64,11 @@ class SettingsScreen extends StatelessWidget {
                     title: 'My Cart',
                     subtitle: 'Add, remove products and move to checkout',
                   ),
-                  const VSettingsMenuTile(
+                  VSettingsMenuTile(
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
                     subtitle: 'In-progress and completed orders',
+                    onTap: () => Get.to(() => const OrderScreen()),
                   ),
                   const VSettingsMenuTile(
                     icon: Iconsax.bank,

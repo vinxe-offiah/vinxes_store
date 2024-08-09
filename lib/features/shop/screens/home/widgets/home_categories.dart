@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vinxes_store/common/widgets/image_texts/vertical_image_text.dart';
+import 'package:vinxes_store/features/shop/screens/sub_category/sub_categories.dart';
 
 import '../../../../../utils/constants/image_strings.dart';
 
@@ -20,7 +22,7 @@ class HomeCategory extends StatelessWidget {
           return VerticalImageText(
             image: VImages.shoes,
             title: "Shoes Category",
-            onTap: () {},
+            onTap: () => Get.to(() => const SubCategoriesScreen()),
           );
         },
       ),
