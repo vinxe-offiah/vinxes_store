@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "162559209823",
+    "project_id": "ecommerce-app-5795d",
+    "storage_bucket": "ecommerce-app-5795d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162559209823:android:3e9de9c6bf3c407b2706ea",
+        "android_client_info": {
+          "package_name": "com.example.vinxes_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162559209823-9macrnbaq6nr33p5n2jc62qmddtpcqai.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vinxes_store",
+            "certificate_hash": "9175e983bb35f51246caab8780d7fd346dbd3183"
+          }
+        },
+        {
+          "client_id": "162559209823-tjuf94esvramhtibgu3ipkec5og3lomo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1WxVQ-wbc0qQZuX6yGFl_ifM7EscnlF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162559209823-tjuf94esvramhtibgu3ipkec5og3lomo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "162559209823-nkncnk46k2r74kjbc1ltigk3rqaisqv7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vinxesStore"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

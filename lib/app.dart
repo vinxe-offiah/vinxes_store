@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vinxes_store/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/theme/theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -15,7 +16,10 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: VAppTheme.appTheme,
       darkTheme: VAppTheme.darkTheme,
-      home: const OnBoardingScreen(),
+      // Show loader or circular progress indicator while authentication repository is deciding which screen to show
+      home: const Scaffold(
+          backgroundColor: VColors.primary,
+          body: Center(child: CircularProgressIndicator(color: Colors.white))),
     );
   }
 }
