@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vinxes_store/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:vinxes_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
 import 'package:vinxes_store/utils/constants/text_strings.dart';
 import 'package:vinxes_store/utils/helpers/helper_functions.dart';
+import 'package:vinxes_store/utils/validators/validation.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({
@@ -15,13 +17,18 @@ class SignUpForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = VHelperFunctions.isDarkMode(context);
+    final controller = Get.put(SignupController());
     return Form(
+      key: controller.signupFormKey,
       child: Column(
         children: [
           Row(
             children: [
               Expanded(
                 child: TextFormField(
+                  validator: (value) =>
+                      VValidator.validateEmptyText('First name', value),
+                  controller: controller.firstName,
                   expands: false,
                   decoration: const InputDecoration(
                     labelText: VTexts.firstName,
@@ -32,6 +39,9 @@ class SignUpForm extends StatelessWidget {
               const SizedBox(width: VSizes.spaceBtwInputFields),
               Expanded(
                 child: TextFormField(
+                  validator: (value) =>
+                      VValidator.validateEmptyText('Last name', value),
+                  controller: controller.lastName,
                   expands: false,
                   decoration: const InputDecoration(
                     labelText: VTexts.lastName,
@@ -45,6 +55,9 @@ class SignUpForm extends StatelessWidget {
 
           // Username
           TextFormField(
+            validator: (value) =>
+                VValidator.validateEmptyText('Username', value),
+            controller: controller.username,
             expands: false,
             decoration: const InputDecoration(
               labelText: VTexts.userName,
@@ -55,6 +68,8 @@ class SignUpForm extends StatelessWidget {
 
           // Email
           TextFormField(
+            validator: (value) => VValidator.validateEmail(value),
+            controller: controller.email,
             expands: false,
             decoration: const InputDecoration(
               labelText: VTexts.email,
@@ -65,6 +80,8 @@ class SignUpForm extends StatelessWidget {
 
           // Phone Number
           TextFormField(
+            validator: (value) => VValidator.validatePhoneNumber(value),
+            controller: controller.phoneNumber,
             expands: false,
             decoration: const InputDecoration(
               labelText: VTexts.phoneNumber,
@@ -75,6 +92,8 @@ class SignUpForm extends StatelessWidget {
 
           // Password
           TextFormField(
+            validator: (value) => VValidator.validatePassword(value),
+            controller: controller.password,
             expands: false,
             decoration: const InputDecoration(
               labelText: VTexts.password,
@@ -127,7 +146,7 @@ class SignUpForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => Get.to(const VerifyEmailScreen()),
+              onPressed: () => controller.signup(),
               child: const Text(VTexts.createAccount),
             ),
           ),
