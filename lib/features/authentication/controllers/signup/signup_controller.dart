@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vinxes_store/utils/constants/image_strings.dart';
+import 'package:vinxes_store/utils/popups/full_screen_loader.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
@@ -16,7 +18,9 @@ class SignupController extends GetxController {
   /// Signup
   Future<void> signup() async {
     try {
-      // Perform something
+      // Start Loading
+      VFullScreenLoader.openLoadingDialog(
+          'We are processing your information...', VImages.onBoardingImage1);
     } catch (e) {
       // Show some error to the user
     } finally {

@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide CarouselController;
 import 'package:get/get.dart';
 import 'package:vinxes_store/common/widgets/images/vrectangular_image.dart';
 import 'package:vinxes_store/features/shop/controllers/home_controller.dart';

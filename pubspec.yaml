@@ -8,7 +8,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.2 <4.0.0'
+  sdk: '>=3.5.0 <4.0.0'
 
 
 dependencies:
@@ -17,12 +17,14 @@ dependencies:
 
   # Utility Packages
   http: ^1.1.0
-  intl: ^0.18.1
+  intl: ^0.19.0
   logger: ^2.0.1
+  lottie: ^3.1.2
+  connectivity_plus: ^6.0.5
   url_launcher: ^6.1.12
   flutter_native_splash: ^2.3.2
   smooth_page_indicator: ^1.1.0
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   percent_indicator: ^4.0.1
   
   google_fonts: ^6.1.0
@@ -31,11 +33,11 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   # State management
-  get: ^4.6.5
+  get: ^4.6.6
   get_storage: ^2.1.1
 
   # Product specifics
-  readmore: ^2.2.0
+  readmore: ^3.0.0
   flutter_rating_bar: ^4.0.1
 
   # FireBase
@@ -46,7 +48,8 @@ dev_dependencies:
     sdk: flutter
 
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
+  win32: ^5.5.4
 
 
 # The following section is specific to Flutter packages.

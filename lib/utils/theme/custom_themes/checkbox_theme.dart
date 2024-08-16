@@ -7,15 +7,15 @@ class VCheckboxTheme {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(4),
     ),
-    checkColor: MaterialStateColor.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    checkColor: WidgetStateColor.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return Colors.white;
       } else {
         return Colors.black;
       }
     }),
-    fillColor: MaterialStateColor.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    fillColor: WidgetStateColor.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return Colors.blue;
       } else {
         return Colors.transparent;
@@ -27,15 +27,15 @@ class VCheckboxTheme {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(4),
     ),
-    checkColor: MaterialStateColor.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    checkColor: WidgetStateColor.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return Colors.white;
       } else {
         return Colors.black;
       }
     }),
-    fillColor: MaterialStateColor.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    fillColor: WidgetStateColor.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return Colors.blue;
       } else {
         return Colors.transparent;
