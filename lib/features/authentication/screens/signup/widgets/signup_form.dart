@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vinxes_store/common/widgets/login_signup/terms_conditions_checkbox.dart';
 import 'package:vinxes_store/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
@@ -90,55 +91,31 @@ class SignUpForm extends StatelessWidget {
           const SizedBox(height: VSizes.spaceBtwInputFields),
 
           // Password
-          TextFormField(
-            validator: (value) => VValidator.validatePassword(value),
-            controller: controller.password,
-            expands: false,
-            decoration: const InputDecoration(
-              labelText: VTexts.password,
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
+          Obx(
+            // Using Obx widget to redraw the screen by observing the obs value of obscure password...
+            //...instead of using a stateful widget and calling setState
+            () => TextFormField(
+              validator: (value) => VValidator.validatePassword(value),
+              controller: controller.password,
+              obscureText: controller.hidePassword.value,
+              expands: false,
+              decoration: InputDecoration(
+                labelText: VTexts.password,
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  onPressed: () => controller.hidePassword.value =
+                      !controller.hidePassword.value,
+                  icon: Icon(controller.hidePassword.value
+                      ? Iconsax.eye
+                      : Iconsax.eye_slash),
+                ),
+              ),
             ),
           ),
           const SizedBox(height: VSizes.spaceBtwInputFields),
 
           ///Terms and conditions checkbox
-          Row(
-            children: [
-              SizedBox(
-                height: 24,
-                width: 24,
-                child: Checkbox(value: true, onChanged: (value) {}),
-              ),
-              const SizedBox(width: VSizes.spaceBtwItems),
-              Text.rich(
-                TextSpan(children: [
-                  TextSpan(
-                      text: '${VTexts.iAgreeTo} ',
-                      style: Theme.of(context).textTheme.bodySmall),
-                  TextSpan(
-                      text: '${VTexts.privacypolicy} ',
-                      style: Theme.of(context).textTheme.bodyMedium!.apply(
-                            color: dark ? VColors.white : VColors.primary,
-                            decoration: TextDecoration.underline,
-                            decorationColor:
-                                dark ? VColors.white : VColors.primary,
-                          )),
-                  TextSpan(
-                      text: '${VTexts.and} ',
-                      style: Theme.of(context).textTheme.bodySmall),
-                  TextSpan(
-                      text: '${VTexts.termsOfUse} ',
-                      style: Theme.of(context).textTheme.bodyMedium!.apply(
-                            color: dark ? VColors.white : VColors.primary,
-                            decoration: TextDecoration.underline,
-                            decorationColor:
-                                dark ? VColors.white : VColors.primary,
-                          )),
-                ]),
-              ),
-            ],
-          ),
+          VTermsAndConditionCheckbox(dark: dark),
           const SizedBox(height: VSizes.spaceBtwSections),
 
           ///Create account button

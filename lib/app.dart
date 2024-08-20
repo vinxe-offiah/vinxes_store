@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vinxes_store/bindings/general_bindings.dart';
 import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/theme/theme.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: VAppTheme.appTheme,
       darkTheme: VAppTheme.darkTheme,
+      initialBinding: GeneralBindings(),
       // Show loader or circular progress indicator while authentication repository is deciding which screen to show
       home: const Scaffold(
           backgroundColor: VColors.primary,
