@@ -73,7 +73,7 @@ class CheckoutScreen extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () => Get.to(
             () => SuccessScreen(
-              image: VImages.paymentSuccessful,
+              animation: VImages.successCheckmark,
               title: 'Payment Success!',
               subTitle: 'Your item will be shipped soon!',
               onPressed: () => Get.offAll(() => const NavigationMenu()),

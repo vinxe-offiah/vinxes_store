@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vinxes_store/common/widgets/login_signup/terms_conditions_checkbox.dart';
 import 'package:vinxes_store/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
 import 'package:vinxes_store/utils/constants/text_strings.dart';
 import 'package:vinxes_store/utils/helpers/helper_functions.dart';

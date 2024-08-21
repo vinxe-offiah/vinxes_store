@@ -27,10 +27,6 @@ class SignupController extends GetxController {
   /// Signup
   void signup() async {
     try {
-      // Start Loading
-      VFullScreenLoader.openLoadingDialog(
-          'We are processing your information...', VImages.onBoardingImage1);
-
       // Check Internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) return;
@@ -47,6 +43,10 @@ class SignupController extends GetxController {
         );
         return;
       }
+
+      // Start Loading
+      VFullScreenLoader.openLoadingDialog(
+          'We are processing your information...', VImages.processingEmail);
 
       // Register user in the Firebase Authentication & save user data in Firebase
       final userCredential = await AuthenticationRepository.instance
@@ -76,7 +76,9 @@ class SignupController extends GetxController {
           message: 'Your account has been created! Verify email to continue.');
 
       // Move to Verify email Screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(
+            email: email.text.trim(),
+          ));
     } catch (e) {
       // Remove Loader
       VFullScreenLoader.stopLoading();

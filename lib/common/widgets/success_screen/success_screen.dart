@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:vinxes_store/common/styles/spacing_styles.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
 import 'package:vinxes_store/utils/constants/text_strings.dart';
-import 'package:vinxes_store/utils/helpers/helper_functions.dart';
+// import 'package:vinxes_store/utils/helpers/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen(
       {super.key,
-      required this.image,
+      required this.animation,
       required this.title,
       required this.subTitle,
       required this.onPressed});
 
-  final String image, title, subTitle;
+  final String animation, title, subTitle;
   final VoidCallback onPressed;
 
   @override
@@ -23,10 +24,8 @@ class SuccessScreen extends StatelessWidget {
           padding: VSpacingStyle.paddingWithAppBarHeight * 2,
           child: Column(
             children: [
-              Image(
-                image: AssetImage(image),
-                width: VHelperFunctions.screenWidth() * 0.6,
-              ),
+              Lottie.asset(animation,
+                  width: MediaQuery.of(context).size.width * 0.8),
               const SizedBox(height: VSizes.spaceBtwSections),
               // Title and Subtitle
               Text(

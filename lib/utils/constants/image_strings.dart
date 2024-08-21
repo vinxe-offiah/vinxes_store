@@ -14,11 +14,19 @@ class VImages {
   static const String onBoardingImage3 =
       "assets/images/on_boarding_images/ware-house-shop.gif";
 
-  //Animated Images
+  // Obsolete still Images
   static const String verifyEmail =
       "assets/images/animated_images/mail-courier.png";
   static const String verificationSuccess =
       "assets/images/animated_images/high-five-illustration.png";
+
+  // Animations
+  static const String successCheckmark =
+      "assets/images/animated_images/success-checkmark.json";
+  static const String groupJumpSuccess =
+      "assets/images/animated_images/group-jump-success.json";
+  static const String processingEmail =
+      "assets/images/animated_images/processing-email.json";
 
   //Category Icons
   static const String shoes = "assets/images/category_icons/shoes.png";
