@@ -23,8 +23,8 @@ class VImages {
   // Animations
   static const String successCheckmark =
       "assets/images/animated_images/success-checkmark.json";
-  static const String groupJumpSuccess =
-      "assets/images/animated_images/group-jump-success.json";
+  static const String loadingAnimation =
+      "assets/images/animated_images/loading-animation.json";
   static const String processingEmail =
       "assets/images/animated_images/processing-email.json";
 

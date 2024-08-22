@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vinxes_store/features/authentication/controllers/login/login_controller.dart';
 import 'package:vinxes_store/features/authentication/screens/password_configuration/forgot_password.dart';
 import 'package:vinxes_store/features/authentication/screens/signup/signup.dart';
-import 'package:vinxes_store/navigation_menu.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
 import 'package:vinxes_store/utils/constants/text_strings.dart';
+import 'package:vinxes_store/utils/validators/validation.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -14,13 +15,17 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: VSizes.spaceBtwSections),
         child: Column(
           children: [
             // Email
             TextFormField(
+              controller: controller.email,
+              validator: (value) => VValidator.validateEmail(value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_right),
                 labelText: VTexts.email,
@@ -28,11 +33,26 @@ class LoginForm extends StatelessWidget {
             ),
             const SizedBox(height: VSizes.spaceBtwInputFields),
             // Password
-            TextFormField(
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                labelText: VTexts.password,
-                suffixIcon: Icon(Iconsax.eye_slash),
+            Obx(
+              // Using Obx widget to redraw the screen by observing the obs value of obscure password...
+              //...instead of using a stateful widget and calling setState
+              () => TextFormField(
+                validator: (value) =>
+                    VValidator.validateEmptyText('Password', value),
+                controller: controller.password,
+                obscureText: controller.hidePassword.value,
+                expands: false,
+                decoration: InputDecoration(
+                  labelText: VTexts.password,
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                    onPressed: () => controller.hidePassword.value =
+                        !controller.hidePassword.value,
+                    icon: Icon(controller.hidePassword.value
+                        ? Iconsax.eye
+                        : Iconsax.eye_slash),
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: VSizes.spaceBtwInputFields / 2),
@@ -44,7 +64,12 @@ class LoginForm extends StatelessWidget {
                 // Remember me
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    Obx(
+                      () => Checkbox(
+                          value: controller.rememberMe.value,
+                          onChanged: (value) => controller.rememberMe.value =
+                              !controller.rememberMe.value),
+                    ),
                     const Text(VTexts.rememberMe),
                   ],
                 ),
@@ -60,7 +85,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.to(() => const NavigationMenu()),
+                onPressed: () => controller.emailAndPasswordSignIn(),
                 child: const Text(VTexts.signIn),
               ),
             ),
