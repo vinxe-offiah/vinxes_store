@@ -7,7 +7,29 @@ import 'package:vinxes_store/features/authentication/models/user/user_model.dart
 class UserController extends GetxController {
   static UserController get instance => Get.find();
 
+  final profileLoading = false.obs;
   final userRepository = Get.put(UserRepository());
+  // Wrap the widget displaying this value with Obx to display this observable
+  Rx<UserModel> user = UserModel.empty().obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchUserRecord();
+  }
+
+  /// Fetch user record
+  Future<void> fetchUserRecord() async {
+    try {
+      profileLoading.value = true;
+      final user = await userRepository.fetchUserDetails();
+      this.user(user);
+    } catch (e) {
+      user(UserModel.empty());
+    } finally {
+      profileLoading.value = false;
+    }
+  }
 
   /// Save user record from any registration provider
   Future<void> saveUserRecord(UserCredential? userCredentials) async {

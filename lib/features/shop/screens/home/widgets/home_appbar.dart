@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vinxes_store/common/styles/shimmer.dart';
 import 'package:vinxes_store/common/widgets/appbar/appbar.dart';
 import 'package:vinxes_store/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:vinxes_store/features/personalization/controllers/user_controller.dart';
 import 'package:vinxes_store/features/shop/screens/cart/cart.dart';
 import 'package:vinxes_store/utils/constants/colors.dart';
 import 'package:vinxes_store/utils/constants/text_strings.dart';
@@ -13,6 +15,7 @@ class VHomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
     return VAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,12 +27,20 @@ class VHomeAppBar extends StatelessWidget {
                 .labelMedium!
                 .apply(color: const Color.fromARGB(255, 231, 224, 224)),
           ),
-          Text(
-            VTexts.homeAppBarSubtitle,
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall!
-                .apply(color: VColors.white),
+          Obx(
+            () {
+              if (controller.profileLoading.value) {
+                return const VShimmerEffect(width: 80, height: 15);
+              } else {
+                return Text(
+                  controller.user.value.fullName,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .apply(color: VColors.white),
+                );
+              }
+            },
           ),
         ],
       ),

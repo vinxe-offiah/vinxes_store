@@ -20,6 +20,9 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+  // Get Authenticated User Data
+  User? get authUser => _auth.currentUser;
+
   // Called from main.dart on app launch
   @override
   void onReady() {
@@ -116,6 +119,23 @@ class AuthenticationRepository extends GetxController {
   Future<void> sendEmailVerification() async {
     try {
       await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      throw VFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw VFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const VFormatException();
+    } on PlatformException catch (e) {
+      throw VPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// FORGOT PASSWORD
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       throw VFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

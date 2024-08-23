@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vinxes_store/features/authentication/controllers/forgot_password/forgot_password_controller.dart';
+import 'package:vinxes_store/features/authentication/screens/login/login.dart';
 import 'package:vinxes_store/utils/constants/image_strings.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
 import 'package:vinxes_store/utils/constants/text_strings.dart';
 import 'package:vinxes_store/utils/helpers/helper_functions.dart';
 
-class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({super.key, required this.email});
+
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +53,16 @@ class ResetPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {}, child: const Text(VTexts.done)),
+                    onPressed: () => Get.offAll(() => const LoginScreen()),
+                    child: const Text(VTexts.done)),
               ),
               const SizedBox(height: VSizes.spaceBtwSections),
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                    onPressed: () {}, child: const Text(VTexts.resendEmail)),
+                    onPressed: () => ForgotPasswordController.instance
+                        .resendPasswordResetEmail(email),
+                    child: const Text(VTexts.resendEmail)),
               ),
             ],
           ),

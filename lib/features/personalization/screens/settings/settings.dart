@@ -6,7 +6,6 @@ import 'package:vinxes_store/common/widgets/custom_shapes/containers/primary_hea
 import 'package:vinxes_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:vinxes_store/common/widgets/texts/section_heading.dart';
 import 'package:vinxes_store/data/repositories/authentication/authentication_repository.dart';
-import 'package:vinxes_store/features/authentication/screens/login/login.dart';
 import 'package:vinxes_store/features/personalization/screens/address/address.dart';
 import 'package:vinxes_store/features/shop/screens/order/order.dart';
 import 'package:vinxes_store/utils/constants/colors.dart';
