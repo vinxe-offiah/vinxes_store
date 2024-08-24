@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vinxes_store/common/widgets/appbar/appbar.dart';
 import 'package:vinxes_store/common/widgets/images/v_circular_image.dart';
 import 'package:vinxes_store/common/widgets/texts/section_heading.dart';
+import 'package:vinxes_store/features/personalization/controllers/user_controller.dart';
+import 'package:vinxes_store/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:vinxes_store/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:vinxes_store/utils/constants/image_strings.dart';
 import 'package:vinxes_store/utils/constants/sizes.dart';
@@ -12,6 +15,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       // AppBar
       appBar: const VAppBar(
@@ -48,9 +52,13 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: VSizes.spaceBtwItems),
 
               VProfileMenu(
-                  title: 'Name', value: 'Vinxes III', onPressed: () {}),
+                  title: 'Name',
+                  value: controller.user.value.fullName,
+                  onPressed: () => Get.to(() => const ChangeName())),
               VProfileMenu(
-                  title: 'Username', value: 'Vinxes', onPressed: () {}),
+                  title: 'Username',
+                  value: controller.user.value.username,
+                  onPressed: () {}),
 
               const SizedBox(height: VSizes.spaceBtwItems / 2),
               const Divider(),
@@ -63,14 +71,16 @@ class ProfileScreen extends StatelessWidget {
 
               VProfileMenu(
                   title: 'User ID',
-                  value: '01229',
+                  value: controller.user.value.id,
                   icon: Iconsax.copy,
                   onPressed: () {}),
               VProfileMenu(
-                  title: 'E-mail', value: 'vinxes@gmail.com', onPressed: () {}),
+                  title: 'E-mail',
+                  value: controller.user.value.email,
+                  onPressed: () {}),
               VProfileMenu(
                   title: 'Phone Number',
-                  value: '+234-803-293-3746',
+                  value: controller.user.value.phoneNumber,
                   onPressed: () {}),
               VProfileMenu(title: 'Gender', value: 'Male', onPressed: () {}),
               VProfileMenu(
@@ -82,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.deleteaccountWarningPopup(),
                   child: const Text('Close Account',
                       style: TextStyle(color: Colors.red)),
                 ),

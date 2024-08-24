@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vinxes_store/features/personalization/controllers/user_controller.dart';
 import 'package:vinxes_store/features/personalization/screens/profile/profile.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -14,6 +15,7 @@ class VUserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return ListTile(
       leading: const VCircularImage(
         image: VImages.user,
@@ -21,12 +23,12 @@ class VUserProfileTile extends StatelessWidget {
         height: 50,
         padding: 0,
       ),
-      title: Text('Vinxes III',
+      title: Text(controller.user.value.fullName,
           style: Theme.of(context)
               .textTheme
               .headlineSmall!
               .apply(color: VColors.white)),
-      subtitle: Text('Vinxes@gmail.com',
+      subtitle: Text(controller.user.value.email,
           style: Theme.of(context)
               .textTheme
               .bodyMedium!
