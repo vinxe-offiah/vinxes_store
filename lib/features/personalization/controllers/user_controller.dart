@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:vinxes_store/common/widgets/loaders/loaders.dart';
 import 'package:vinxes_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:vinxes_store/data/repositories/user/user_repository.dart';
@@ -16,6 +17,7 @@ class UserController extends GetxController {
   static UserController get instance => Get.find();
 
   final profileLoading = false.obs;
+  final imageLoading = false.obs;
   final userRepository = Get.put(UserRepository());
   // Wrap the widget displaying this value with Obx to display this observable
   Rx<UserModel> user = UserModel.empty().obs;
@@ -46,26 +48,33 @@ class UserController extends GetxController {
   /// Save user record from any registration provider
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        // convert name to first and last name
-        final nameParts =
-            UserModel.nameParts(userCredentials.user!.displayName ?? '');
-        final username =
-            UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+      // First update Rx user and then check if user data is already stored. If not, store new data
+      await fetchUserRecord();
 
-        // Map the Data
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          username: username,
-          email: userCredentials.user!.email ?? '',
-          phoneNumber: userCredentials.user!.phoneNumber ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-        );
+      // If no record is already stored
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          // convert name to first and last name
+          final nameParts =
+              UserModel.nameParts(userCredentials.user!.displayName ?? '');
+          final username = UserModel.generateUsername(
+              userCredentials.user!.displayName ?? '');
 
-        // Save user data
-        await userRepository.saveUserRecord(user);
+          // Map the Data
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            firstName: nameParts[0],
+            lastName:
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            username: username,
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+          );
+
+          // Save user data
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       VLoaders.warningSnackBar(
@@ -155,6 +164,37 @@ class UserController extends GetxController {
     } catch (e) {
       VFullScreenLoader.stopLoading();
       VLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  // Upload Profile Image
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 520,
+          maxWidth: 520);
+      if (image != null) {
+        imageLoading.value = true;
+        // Upload Image
+        final imageUrl =
+            await userRepository.uploadImage('Users/Images/Profile/', image);
+        // Update User Image Record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+
+        VLoaders.successSnackBar(
+            title: 'Congratulations',
+            message: 'Your profile picture has been updated!');
+      }
+    } catch (e) {
+      VLoaders.errorSnackBar(
+          title: 'Oh Snap', message: 'Something went wrong: $e');
+    } finally {
+      imageLoading.value = false;
     }
   }
 }

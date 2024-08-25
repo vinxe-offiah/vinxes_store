@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:vinxes_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:vinxes_store/features/authentication/models/user/user_model.dart';
 import 'package:vinxes_store/utils/exceptions/firebase_exceptions.dart';
@@ -90,6 +94,24 @@ class UserRepository extends GetxController {
   Future<void> removeUserRecord(String userId) async {
     try {
       await _db.collection("Users").doc(userId).delete();
+    } on FirebaseException catch (e) {
+      throw VFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const VFormatException();
+    } on PlatformException catch (e) {
+      throw VPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wront. Please try again';
+    }
+  }
+
+  /// Upload Image
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
     } on FirebaseException catch (e) {
       throw VFirebaseException(e.code).message;
     } on FormatException catch (_) {

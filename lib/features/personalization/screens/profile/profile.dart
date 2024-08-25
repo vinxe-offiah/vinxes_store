@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vinxes_store/common/styles/shimmer.dart';
 import 'package:vinxes_store/common/widgets/appbar/appbar.dart';
 import 'package:vinxes_store/common/widgets/images/v_circular_image.dart';
 import 'package:vinxes_store/common/widgets/texts/section_heading.dart';
@@ -34,9 +35,21 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const VCircularImage(image: VImages.user),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image =
+                          networkImage.isNotEmpty ? networkImage : VImages.user;
+                      return controller.imageLoading.value
+                          ? const VShimmerEffect(
+                              width: 80, height: 80, radius: 80)
+                          : VCircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              isNetworkImage: networkImage.isNotEmpty);
+                    }),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text('Change Profile Picture')),
                   ],
                 ),
