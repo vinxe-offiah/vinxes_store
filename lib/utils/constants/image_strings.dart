@@ -29,7 +29,13 @@ class VImages {
       "assets/images/animated_images/processing-email.json";
 
   //Category Icons
-  static const String shoes = "assets/images/category_icons/shoes.png";
+  static const String shoesIcon = "assets/images/category_icons/shoes.png";
+  static const String clothesIcon = "assets/images/category_icons/clothes.png";
+  static const String furnitureIcon = "assets/images/category_icons/shoes.png";
+  static const String sportsIcon = "assets/images/category_icons/football.png";
+  static const String electronicsIcon =
+      "assets/images/category_icons/electronics.png";
+  static const String animalIcon = "assets/images/category_icons/animals.png";
   static const String user = "assets/images/user/user.png";
 
   //carousel Images
